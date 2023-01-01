@@ -10,6 +10,7 @@ function App() {
     <header>
       <h1>Recipe App</h1>
     </header>
+    <SearchBar />
     <RecipeGallery />
     </>
   );

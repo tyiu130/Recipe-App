@@ -36,9 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-button {
-  background-color: pink;
-  height: 100px;
-  width: 100px;
-}

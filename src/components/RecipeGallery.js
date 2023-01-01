@@ -1,7 +1,12 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import RecipeItems from "./RecipeItems";
 
 function RecipeGallery() {
+
+    const [recipeResults , setRecipeResults ] = useState();
+
     useEffect(() => {
         axios({
             url:'https://api.edamam.com/api/recipes/v2',
@@ -17,6 +22,17 @@ function RecipeGallery() {
             console.log(results.data.hits);
         })
     }, [])
+
+
+    return (
+        <section>
+        
+            <RecipeItems  recipeArray={recipeResults}/>
+            
+        </section>
+    );
+
+    
 }
 
 export default RecipeGallery;

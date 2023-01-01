@@ -1,11 +1,19 @@
+import { useState } from "react";
+
 
 function SearchBar() {
-    <>
-        <form action="">
-            <input type="text" id="header-search" placeholder="Search Recipes" />
-        </form> 
-        <button>Search</button>
-    </>
+
+    const [userInput, setUserInput] = useState({
+
+    })
+
+    return(
+        <>
+            <form action="">
+                <input type="text" id="header-search"  placeholder="Search Recipes"/>
+            </form> 
+        </>
+    )
 }
 
 export default SearchBar;
