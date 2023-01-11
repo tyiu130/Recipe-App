@@ -3,9 +3,6 @@ import { useState } from "react";
 
 function SearchBar() {
 
-    const [userInput, setUserInput] = useState({
-
-    })
 
     return(
         <>

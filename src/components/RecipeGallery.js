@@ -5,7 +5,6 @@ import RecipeItems from "./RecipeItems";
 
 function RecipeGallery() {
 
-    const [recipeResults , setRecipeResults ] = useState();
 
     useEffect(() => {
         axios({
