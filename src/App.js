@@ -8,7 +8,7 @@ function App() {
   return (
     <>
     <header>
-      <h1>Recipe App</h1>
+      <h1>Recipe App!</h1>
     </header>
     <SearchBar />
     <RecipeGallery />
