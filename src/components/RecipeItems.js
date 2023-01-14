@@ -1,20 +1,8 @@
 
-function RecipeItems(recipeArray){
-    console.log(recipeArray)
- return (
-    <div className="recipePhotos">
-        {recipeArray.map((photo) => {
-            return (
-                <div className="photoContainer">
-                    
-                </div>
-            )
-        })}
-
-    </div>
-        
-    
- )
+const RecipeItems = ({recipeArray}) => {
+    return (
+        <h2>hi</h2>
+    )
 }
 
 export default RecipeItems;
