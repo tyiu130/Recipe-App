@@ -1,7 +1,7 @@
 
 import './App.css';
 import SearchBar from './components/SearchBar';
-import RecipeGallery from './components/RecipeGallery';
+
 
 
 function App() {
