@@ -11,7 +11,6 @@ function App() {
       <h1>Recipe App!</h1>
     </header>
     <SearchBar />
-    <RecipeGallery />
     </>
   );
 }

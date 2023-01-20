@@ -20,6 +20,7 @@ function SearchBar() {
                 <input type="text" value={userInput} placeholder="Search Recipes" onChange={handleInput} />
             </form> 
             <button id="searchBtn" onClick={() => onClick(userInput)}>Search</button>
+            
             <RecipeGallery userInput={userInput}/>
         </>
     )
