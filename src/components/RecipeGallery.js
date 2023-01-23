@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
 
 
@@ -22,26 +23,37 @@ function RecipeGallery({userInput}) {
                 app_key: '4e4719780880769db9a5c0da2940752b',
                 app_id: '78009ee3',
                 q: userInput,
+                foodId: '',
                 type: 'public'
             },
         }).then((results) => {
-            console.log(results.data.hits)
+            console.log(results.data)
             setRecipeResults(results.data.hits);
         })
     }, [userInput])
 
 
+
     return (
         
         <section>
-            <h2>hi</h2>
-             <ul className="recipeCards">
+    
+             <ul className="recipeCards wrapper">
                 {
                     recipeResults.map( (recipeObject, index) => {
+                        // console.log(recipeObject.recipe.label)
                         return <li key={index}>
                             {
-                                <img src={recipeObject.recipe.image} alt="" />
-                                // console.log(recipeObject.recipe.image)
+                                <>
+                                    
+                                     <a href={recipeObject.recipe.url} target="_blank">
+                                        <img src={recipeObject.recipe.image} alt="recipeObject.recipe.label" />
+                                     </a>
+                                     <div className="description"> 
+                                        <h3>{recipeObject.recipe.label}</h3>
+                                        <h4>Calories: {recipeObject.recipe.calories.toFixed(2)}</h4>
+                                    </div>
+                                </>
                             }
                         </li>
                     })
