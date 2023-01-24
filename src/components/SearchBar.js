@@ -5,9 +5,6 @@ function SearchBar() {
 
     const [userInput, setUserInput] = useState("");
 
-    const onClick = (searchTerm) => {
-        console.log(`searched ${searchTerm}`)
-    }
 
     const handleInput = (event) => {
         setUserInput(event.target.value)
