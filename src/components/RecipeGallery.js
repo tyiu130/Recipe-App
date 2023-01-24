@@ -49,9 +49,12 @@ function RecipeGallery({userInput}) {
                                      <a href={recipeObject.recipe.url} target="_blank">
                                         <img src={recipeObject.recipe.image} alt="recipeObject.recipe.label" />
                                      </a>
+
                                      <div className="description"> 
-                                        <h3>{recipeObject.recipe.label}</h3>
-                                        <h4>Calories: {recipeObject.recipe.calories.toFixed(2)}</h4>
+                                        <a href={recipeObject.recipe.url} target="_blank">
+                                            <h3>{recipeObject.recipe.label}</h3>
+                                            <h4>Calories: {recipeObject.recipe.calories.toFixed(2)}</h4>
+                                        </a>
                                     </div>
                                 </>
                             }

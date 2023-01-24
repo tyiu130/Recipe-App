@@ -2,21 +2,26 @@
 
 
 .wrapper {
-    max-width: 1280px;
+    max-width: 1920px;
     width: 90%;
     margin: 0 auto;
 }
 
 body {
-    background-color: #141212;
+    background-color: #2E2D2B;
+    background-image: url(../../../../designs/topbanner.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
     text-align: center;
 
+
 }
+
 
 h1 {
     font-size: 200px;
     color: #fff;
-    margin-bottom: 60px;
+    margin: 350px 0 60px 0;
 }
 
 h1,
@@ -28,14 +33,20 @@ h4 {
 }
 
 h4 {
-    margin: 0;
+    margin: 10px 0 20px 0;
+    font-size: 18px;
+  
 }
 
 h3 {
     margin-bottom: 0;
+    font-size: 22px;
+   
+    
 }
 
 input {
-    width: 500px;
+    width: 350px;
     height: 30px;
+    margin-bottom: 50px;
 }
