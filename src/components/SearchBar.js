@@ -5,20 +5,29 @@ function SearchBar() {
 
     const [userInput, setUserInput] = useState("");
 
+    const [searchTerm, setSearchTerm] = useState("");
 
-    const handleInput = (event) => {
-        setUserInput(event.target.value)
+    const handleClick = (e) => {
+        e.preventDefault();
+        setSearchTerm(userInput);
     }
+
+
+    const handleInput = (e) => {
+        setUserInput(e.target.value)
+    }
+
 
     console.log(userInput)
     return(
         <>
             <form id="searchContainer">
                 <input type="text" value={userInput} placeholder="Search Recipes" onChange={handleInput} />
+                <input type="submit" className="button" onClick={e => {handleClick(e, userInput)}} />
             </form> 
             
             
-            <RecipeGallery userInput={userInput}/>
+            <RecipeGallery userInput={searchTerm}/>
         </>
     )
 }

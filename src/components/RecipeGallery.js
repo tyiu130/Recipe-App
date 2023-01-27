@@ -3,15 +3,19 @@ import { useEffect, useState } from "react";
 
 
 
+
 function RecipeGallery({userInput}) {
 
     const [recipeResults , setRecipeResults ] = useState([]);
+
+  
 
     const [recipeSearch, setRecipeSearch] = useState(null);
 
     if(recipeSearch !== null) {
         setRecipeSearch(userInput)
     }
+    
 
     useEffect(() => {
         axios({
@@ -28,14 +32,18 @@ function RecipeGallery({userInput}) {
         }).then((results) => {
             console.log(results.data)
             setRecipeResults(results.data.hits);
+            axios();
         })
     }, [userInput])
 
-
+ 
+  
 
     return (
         
         <section>
+
+            
     
              <ul className="recipeCards wrapper">
                 {
