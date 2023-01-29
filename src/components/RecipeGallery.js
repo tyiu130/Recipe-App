@@ -3,23 +3,22 @@ import { useEffect, useState } from "react";
 
 
 
-
 function RecipeGallery({userInput}) {
 
     const [recipeResults , setRecipeResults ] = useState([]);
 
-  
 
     const [recipeSearch, setRecipeSearch] = useState(null);
 
     if(recipeSearch !== null) {
         setRecipeSearch(userInput)
     }
-    
+
+
 
     useEffect(() => {
         axios({
-            url:'https://api.edamam.com/api/recipes/v2',
+            url:'https://proxy-ugwolsldnq-uc.a.run.app/https://api.edamam.com/api/recipes/v2',
             method: 'GET',
             dataResponse: 'json',
             params: {
@@ -34,27 +33,40 @@ function RecipeGallery({userInput}) {
             setRecipeResults(results.data.hits);
             axios();
         })
-    }, [userInput])
+        
+        fetch(axios.url)
+        .then((results) => {
+            if(results.ok){
+                return results.json();
+            } else {
+                throw new Error(results.statusText);
+            }
+        })
+        .catch((err) => {
+            if (err.message === "Not Found") {
+                alert("We couldn't find what you were looking for, try again!");
+            } else {
+                alert("Something went wrong and we don't know what happened")
+            }
+        })
+        
+    }, [userInput]);
 
- 
-  
-
+    
     return (
         
         <section>
-
-            
     
              <ul className="recipeCards wrapper">
                 {
                     recipeResults.map( (recipeObject, index) => {
-                        // console.log(recipeObject.recipe.label)
+                        
                         return <li key={index}>
                             {
                                 <>
                                     
                                     <a href={recipeObject.recipe.url} target="_blank" rel="noopener noreferrer">
-                                        <img src={recipeObject.recipe.image} alt="recipeObject.recipe.label" />
+                                        <img src={recipeObject.recipe.image} alt={recipeObject.recipe.label} />
                                      </a>
 
                                      <div className="description"> 
@@ -62,7 +74,9 @@ function RecipeGallery({userInput}) {
                                             <h3>{recipeObject.recipe.label}</h3>
                                             <h4>Calories: {recipeObject.recipe.calories.toFixed(2)}</h4>
                                         </a>
+                                        
                                     </div>
+                                    
                                 </>
                             }
                         </li>
