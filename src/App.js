@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+
 import './App.css';
+import SearchBar from './components/SearchBar';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <header>
+      <h1>Today's Menu...</h1>
+    </header>
+
+    <SearchBar />
+
+    
+    <footer>
+        Built and Designed by Terri Yiu.    Background Image by <a href="https://www.freepik.com/free-vector/blackboard-food-background_3876169.htm#query=chalk&position=6&from_view=search&track=sph">Freepik</a>
+    </footer>
+
+   
+    </>
   );
 }
 
