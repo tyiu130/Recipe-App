@@ -7,7 +7,7 @@ function App() {
   return (
     <>
     <header>
-      <h1>Search Recipes!</h1>
+      <h1>Today's Menu...</h1>
     </header>
 
     <SearchBar />

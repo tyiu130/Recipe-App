@@ -30,25 +30,14 @@ function RecipeGallery({userInput}) {
             },
         }).then((results) => {
             console.log(results.data)
-            setRecipeResults(results.data.hits);
-            axios();
+            setRecipeResults(results.data.hits)
+        }) .catch((error) => {
+            if (error.message === 404) {
+                alert("The API has reached its limit! Please give it a few minutes and try again!")
+            }
         })
         
-        fetch(axios.url)
-        .then((results) => {
-            if(results.ok){
-                return results.json();
-            } else {
-                throw new Error(results.statusText);
-            }
-        })
-        .catch((err) => {
-            if (err.message === "Not Found") {
-                alert("We couldn't find what you were looking for, try again!");
-            } else {
-                alert("Something went wrong and we don't know what happened")
-            }
-        })
+        
         
     }, [userInput]);
 
@@ -69,12 +58,14 @@ function RecipeGallery({userInput}) {
                                         <img src={recipeObject.recipe.image} alt={recipeObject.recipe.label} />
                                      </a>
 
-                                     <div className="description"> 
+                                     <div > 
                                         <a href={recipeObject.recipe.url} target="_blank" rel="noopener noreferrer">
                                             <h3>{recipeObject.recipe.label}</h3>
-                                            <h4>Calories: {recipeObject.recipe.calories.toFixed(2)}</h4>
                                         </a>
-                                        
+                                    </div>
+                                    <div className="description">
+                                        <p className="calories">Calories: {recipeObject.recipe.calories.toFixed(2)}</p>
+                                        <p className="label">Health Label: {recipeObject.recipe.healthLabels.slice(2, 3)}</p>
                                     </div>
                                     
                                 </>

@@ -22,8 +22,8 @@ function SearchBar() {
     return(
         <>
             <form id="searchContainer">
-                <input type="text" value={userInput} placeholder="Search Recipes" onChange={handleInput} />
-                <input type="submit" className="button" onClick={e => {handleClick(e, userInput)}} />
+                <input type="text" value={userInput} placeholder="Search recipes or ingredients" onChange={handleInput} />
+                <input type="submit" value="Submit" className="button" onClick={e => {handleClick(e, userInput)}} />
             </form> 
             
             
