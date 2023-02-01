@@ -31,14 +31,12 @@ function RecipeGallery({userInput}) {
         }).then((results) => {
             console.log(results.data)
             setRecipeResults(results.data.hits)
-        }) .catch((error) => {
+        }).catch((error) => {
             if (error.message === 404) {
                 alert("The API has reached its limit! Please give it a few minutes and try again!")
             }
         })
-        
-        
-        
+
     }, [userInput]);
 
     
