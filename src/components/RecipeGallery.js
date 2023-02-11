@@ -1,16 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { getDatabase, ref, push } from "firebase/database";
+import firebase from "../firebase";
+import RecipeCard from "./RecipeCard";
 
 
 
-function RecipeGallery({userInput}) {
 
-    const [recipeResults , setRecipeResults ] = useState([]);
+function RecipeGallery({ userInput }) {
+
+    const [recipeResults, setRecipeResults] = useState([]);
 
 
     const [recipeSearch, setRecipeSearch] = useState(null);
 
-    if(recipeSearch !== null) {
+    if (recipeSearch !== null) {
         setRecipeSearch(userInput)
     }
 
@@ -18,7 +22,7 @@ function RecipeGallery({userInput}) {
 
     useEffect(() => {
         axios({
-            url:'https://proxy-ugwolsldnq-uc.a.run.app/https://api.edamam.com/api/recipes/v2',
+            url: 'https://api.edamam.com/api/recipes/v2',
             method: 'GET',
             dataResponse: 'json',
             params: {
@@ -39,47 +43,38 @@ function RecipeGallery({userInput}) {
 
     }, [userInput]);
 
-    
-    return (
-        
-        <section>
-    
-             <ul className="recipeCards wrapper">
-                {
-                    recipeResults.map( (recipeObject, index) => {
-                        
-                        return <li key={index}>
-                            {
-                                <>
-                                    
-                                    <a href={recipeObject.recipe.url} target="_blank" rel="noopener noreferrer">
-                                        <img src={recipeObject.recipe.image} alt={recipeObject.recipe.label} />
-                                     </a>
+    const pushToDatabase = (thingToPush) => {
+        console.log(thingToPush)
+        const database = getDatabase(firebase);
+        const dbRef = ref(database, "/recipes");
+        const newObject = {
+            label: thingToPush.label,
+            image: thingToPush.image,
+            url: thingToPush.url,
+            id: thingToPush.uri.split('_')[1],
+            calories: thingToPush.calories,
+            healthLabels: thingToPush.healthLabels
+        }
+        push(dbRef, newObject)
+    }
 
-                                     <div > 
-                                        <a href={recipeObject.recipe.url} target="_blank" rel="noopener noreferrer">
-                                            <h3>{recipeObject.recipe.label}</h3>
-                                        </a>
-                                    </div>
-                                    <div className="description">
-                                        <p className="calories">Calories: {recipeObject.recipe.calories.toFixed(2)}</p>
-                                        <p className="label">Health Label: {recipeObject.recipe.healthLabels.slice(2, 3)}</p>
-                                    </div>
-                                    
-                                </>
-                            }
-                        </li>
+    return (
+        <section>
+            <ul className="recipeCards wrapper">
+                {
+                    recipeResults.map((recipeObject) => {
+                        const recipeUri = recipeObject.recipe.uri;
+                        const recipeId = recipeUri.split('_')[1];
+                        
+                        return (
+                            <RecipeCard key={recipeId} recipeInfo={recipeObject.recipe} pushFn={pushToDatabase} />
+                        )
                     })
                 }
-
             </ul>
-        
-            
-            
         </section>
-    );
-    }
-    
 
+    );
+}
 
 export default RecipeGallery;
