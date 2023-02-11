@@ -1,7 +1,6 @@
 import './App.css';
 import SearchBar from './components/SearchBar';
 import { Route, Routes } from 'react-router-dom';
-import RecipeGallery from './components/RecipeGallery';
 import SavedRecipes from './components/SavedRecipes';
 
 
