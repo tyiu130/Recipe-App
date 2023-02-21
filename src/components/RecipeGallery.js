@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { getDatabase, ref, push} from "firebase/database";
+import { getDatabase, ref, push } from "firebase/database";
 import firebase from "../firebase";
 import RecipeCard from "./RecipeCard";
 
@@ -61,14 +61,13 @@ function RecipeGallery({ userInput }) {
         {recipeResults.map((recipeObject) => {
           const recipeUri = recipeObject.recipe.uri;
           const recipeId = recipeUri.split("_")[1];
-        
+
           return (
             <>
               <RecipeCard
                 key={recipeId}
                 recipeInfo={recipeObject.recipe}
                 pushFn={pushToDatabase}
-          
               />
             </>
           );

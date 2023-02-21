@@ -2,6 +2,7 @@ import { getDatabase, ref, onValue} from "firebase/database";
 import firebase from "../firebase";
 import { useEffect, useState } from "react";
 import RecipeCard from "./RecipeCard";
+import { Outlet, Link } from 'react-router-dom';
 
 const SavedRecipes = () => {
 
@@ -16,12 +17,13 @@ const SavedRecipes = () => {
             setRecipes(recipeArray)
         })
     }, []);
-
-
-   
-   
+ 
     return (
         <section>
+            <button className='recipePage'>
+                <Link to="/"> Look for Recipes ❤ </Link>
+            </button>
+
             <ul className="recipeCards wrapper">
                 {
                     recipes.map((recipeObject) => {
@@ -30,12 +32,12 @@ const SavedRecipes = () => {
                         return (
                             <section>
                                 <RecipeCard recipeInfo={recipeObject} key={recipeId}  />
-                                
                             </section>
                         )
                     })
                 }
             </ul>
+            <Outlet/>
         </section>
     )
 }

@@ -83,6 +83,16 @@ input {
   }
 }
 
+.recipePage {
+  margin: 20px 0;
+  background-color: transparent;
+  padding: 5px 8px;
+  border: #fff solid 2px;
+}
+.recipePage:hover {
+  cursor: pointer;
+}
+
 ul {
   display: flex;
   justify-content: space-evenly;

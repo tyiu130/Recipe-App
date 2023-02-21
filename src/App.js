@@ -1,6 +1,6 @@
 import './App.css';
 import SearchBar from './components/SearchBar';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import SavedRecipes from './components/SavedRecipes';
 
 
@@ -13,10 +13,6 @@ function App() {
       </header>
 
       <main>
-        <button>
-          <Link to="/recipes"> Your Saved Recipes ❤ </Link>
-        </button>
-
         <Routes>
           <Route path="/" element={<SearchBar />} />
           <Route path="/recipes" element={<SavedRecipes />} />

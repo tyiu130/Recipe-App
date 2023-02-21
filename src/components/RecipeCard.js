@@ -14,7 +14,7 @@ const RecipeCard = ({recipeInfo, pushFn}) => {
         //   id: removeFromFireBase.uri.split("_")[1]
         // }
         remove(dbRef);
-        setRemoveRecipe('');
+        setRemoveRecipe("");
     };
 
     return (
