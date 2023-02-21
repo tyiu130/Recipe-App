@@ -1,10 +1,8 @@
 import { getDatabase, ref, remove } from "firebase/database";
 import firebase from "../firebase";
-import { useState } from "react";
+
 
 const RecipeCard = ({recipeInfo, pushFn}) => {
-    
-    const [removeRecipe, setRemoveRecipe] = useState('');
 
     const removeItem = () => {
         const database = getDatabase(firebase);
@@ -14,7 +12,6 @@ const RecipeCard = ({recipeInfo, pushFn}) => {
         //   id: removeFromFireBase.uri.split("_")[1]
         // }
         remove(dbRef);
-        setRemoveRecipe("");
     };
 
     return (
