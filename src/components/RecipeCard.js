@@ -2,7 +2,7 @@ import { getDatabase, ref, remove } from "firebase/database";
 import firebase from "../firebase";
 
 
-const RecipeCard = ({recipeInfo, pushFn}) => {
+const RecipeCard = ({ recipeInfo, pushFn }) => {
 
     const removeItem = () => {
         const database = getDatabase(firebase);
@@ -32,10 +32,10 @@ const RecipeCard = ({recipeInfo, pushFn}) => {
 
             {
                 pushFn
-                    ? <button onClick={() => pushFn(recipeInfo)}>Save Recipe</button>
-                    : <button onClick={() => removeItem(recipeInfo.id)}>Remove Recipe</button>
+                    ? <button className="recipeButton" onClick={() => pushFn(recipeInfo)}>Save Recipe ❤</button>
+                    : <button className="recipeButton" onClick={() => removeItem(recipeInfo.id)}>Remove Recipe</button>
             }
-            
+
         </li>
     )
 }

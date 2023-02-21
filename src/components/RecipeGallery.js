@@ -56,24 +56,27 @@ function RecipeGallery({ userInput }) {
   };
 
   return (
-    <section>
-      <ul className="recipeCards wrapper" >
-        {recipeResults.map((recipeObject) => {
-          const recipeUri = recipeObject.recipe.uri;
-          const recipeId = recipeUri.split("_")[1];
+    <>
 
-          return (
-            <>
-              <RecipeCard
-                key={recipeId}
-                recipeInfo={recipeObject.recipe}
-                pushFn={pushToDatabase}
-              />
-            </>
-          );
-        })}
-      </ul>
-    </section>
+      <section>
+        <ul className="recipeCards wrapper" >
+          {recipeResults.map((recipeObject) => {
+            const recipeUri = recipeObject.recipe.uri;
+            const recipeId = recipeUri.split("_")[1];
+
+            return (
+              <>
+                <RecipeCard
+                  key={recipeId}
+                  recipeInfo={recipeObject.recipe}
+                  pushFn={pushToDatabase}
+                />
+              </>
+            );
+          })}
+        </ul>
+      </section>
+    </>
   );
 }
 

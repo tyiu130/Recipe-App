@@ -1,4 +1,4 @@
-import { getDatabase, ref, onValue} from "firebase/database";
+import { getDatabase, ref, onValue } from "firebase/database";
 import firebase from "../firebase";
 import { useEffect, useState } from "react";
 import RecipeCard from "./RecipeCard";
@@ -17,9 +17,11 @@ const SavedRecipes = () => {
             setRecipes(recipeArray)
         })
     }, []);
- 
+
     return (
         <section>
+            <h2>Your Saved Recipes</h2>
+
             <button className='recipePage'>
                 <Link to="/"> Look for Recipes ❤ </Link>
             </button>
@@ -28,16 +30,16 @@ const SavedRecipes = () => {
                 {
                     recipes.map((recipeObject) => {
                         const recipeId = recipeObject.id;
-                        
+
                         return (
                             <section>
-                                <RecipeCard recipeInfo={recipeObject} key={recipeId}  />
+                                <RecipeCard recipeInfo={recipeObject} key={recipeId} />
                             </section>
                         )
                     })
                 }
             </ul>
-            <Outlet/>
+            <Outlet />
         </section>
     )
 }

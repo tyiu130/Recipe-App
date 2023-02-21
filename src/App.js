@@ -8,9 +8,6 @@ import SavedRecipes from './components/SavedRecipes';
 function App() {
   return (
     <>
-      <header>
-        <h1>Today's Menu...</h1>
-      </header>
 
       <main>
         <Routes>

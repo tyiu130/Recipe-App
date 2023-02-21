@@ -23,6 +23,10 @@ function SearchBar() {
     console.log(userInput)
     return (
         <>
+            <header>
+                <h1>Today's Menu...</h1>
+            </header>
+
             <button className='recipePage'>
                 <Link to="/recipes"> Your Saved Recipes ❤ </Link>
             </button>
