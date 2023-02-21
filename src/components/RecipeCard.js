@@ -1,7 +1,21 @@
-const RecipeCard = ({recipeInfo, pushFn }) => {
-    
+import { getDatabase, ref, remove } from "firebase/database";
+import firebase from "../firebase";
+
+
+const RecipeCard = ({ recipeInfo, pushFn }) => {
+
+    const removeItem = () => {
+        const database = getDatabase(firebase);
+        const dbRef = ref(database, `/`);
+        // removeFromFireBase.uri.split("_")[1]);
+        // const removeId = {
+        //   id: removeFromFireBase.uri.split("_")[1]
+        // }
+        remove(dbRef);
+    };
+
     return (
-        <li>
+        <li key={recipeInfo.id}>
             <a href={recipeInfo.url} target="_blank" rel="noopener noreferrer">
                 <img src={recipeInfo.image} alt={recipeInfo.label} />
             </a>
@@ -17,10 +31,11 @@ const RecipeCard = ({recipeInfo, pushFn }) => {
             </div>
 
             {
-                pushFn ? 
-                <button onClick={() => pushFn(recipeInfo)}>Save Recipe</button>
-                :null
+                pushFn
+                    ? <button className="recipeButton" onClick={() => pushFn(recipeInfo)}>Save Recipe ❤</button>
+                    : <button className="recipeButton" onClick={() => removeItem(recipeInfo.id)}>Remove Recipe</button>
             }
+
         </li>
     )
 }

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import RecipeGallery from "./RecipeGallery";
+import { Outlet, Link } from 'react-router-dom';
+
 
 function SearchBar() {
 
@@ -19,15 +21,23 @@ function SearchBar() {
 
 
     console.log(userInput)
-    return(
+    return (
         <>
+            <header>
+                <h1>Today's Menu...</h1>
+            </header>
+
+            <button className='recipePage'>
+                <Link to="/recipes"> Your Saved Recipes ❤ </Link>
+            </button>
+
             <form id="searchContainer">
                 <input type="text" value={userInput} placeholder="Search recipes or ingredients" onChange={handleInput} />
-                <input type="submit" value="Submit" className="button" onClick={e => {handleClick(e, userInput)}} />
-            </form> 
-            
-            
-            <RecipeGallery userInput={searchTerm}/>
+                <input type="submit" value="Submit" className="button" onClick={e => { handleClick(e, userInput) }} />
+            </form>
+
+            <RecipeGallery userInput={searchTerm} />
+            <Outlet />
         </>
     )
 }
